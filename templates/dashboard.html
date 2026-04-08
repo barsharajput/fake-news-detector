@@ -1,1 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dashboard - VeriNews AI</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = { darkMode: "class" };
+        </script>
+    </head>
+
+    <body class="bg-gray-100 dark:bg-gray-900 dark:text-white transition">
+        <div class="container mx-auto p-6">
+            <!-- HEADER -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold">📊 Dashboard</h1>
+
+                <div class="flex gap-4">
+                    <a href="/" class="text-blue-500">Home</a>
+                    <a href="/logout" class="text-red-500">Logout</a>
+                </div>
+            </div>
+
+            <!-- HISTORY TABLE -->
+            <div class="bg-white dark:bg-gray-800 p-5 rounded shadow">
+                <h2 class="text-xl font-semibold mb-4">
+                    📜 Your Analysis History
+                </h2>
+
+                {% if history %}<a
+                    href="/clear"
+                    class="bg-red-500 text-white px-3 py-1 rounded mb-4 inline-block"
+                >
+                    🧹 Clear All History
+                </a>
+                <div class="overflow-x-auto">
+                    <table class="w-full border">
+                        <thead class="bg-gray-200 dark:bg-gray-700">
+                            <tr>
+                                <th class="p-2 border">News</th>
+                                <th class="p-2 border">Result</th>
+                                <th class="p-2 border">Confidence</th>
+                                <th class="p-2 border">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for item in history %}
+                            <tr
+                                class="text-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                            >
+                                <td class="p-2 border text-left">
+                                    <a
+                                        href="/delete/{{ item.id }}"
+                                        class="text-red-500 hover:underline"
+                                    >
+                                        Delete
+                                    </a>
+
+                                    {{ item.text }}
+                                </td>
+
+                                <td
+                                    class="p-2 border {% if item.result == 'REAL NEWS' %} text-green-500 {% elif item.result == 'FAKE NEWS' %} text-red-500 {% else %} text-yellow-500 {% endif %}"
+                                >
+                                    {{ item.result }}
+                                </td>
+
+                                <td class="p-2 border">
+                                    {{ item.confidence }}%
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-gray-500">No history available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <script>
+            function toggleDarkMode() {
+                document.documentElement.classList.toggle("dark");
+            }
+        </script>
+    </body>
+</html>
 
