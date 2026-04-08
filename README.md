@@ -1,146 +1,132 @@
-🧠 VeriNews AI
+🧠 VeriNews AI – Explainable Fake News Detection System
 
-Explainable Fake News Detection & Verification System
-
-🚀 VeriNews AI is an advanced AI-powered system designed to detect fake news using Machine Learning and Explainable AI techniques. It not only classifies news as Real or Fake, but also provides confidence scores, visual insights, and interpretability for better decision-making.
+🔗 Research Paper: https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
 
 ---
 
 📌 Overview
 
-In today’s digital era, misinformation spreads rapidly. VeriNews AI addresses this problem by combining machine learning models with Explainable AI (SHAP) to ensure both accuracy and transparency.
+VeriNews AI is an intelligent fake news detection and verification system that leverages Machine Learning and Explainable AI to classify news articles as Real, Fake, or Uncertain.
 
-The system provides:
-
-- Real-time fake news detection
-- Confidence-based prediction
-- Visual analytics dashboard
-- Explainable insights for trust
+The system goes beyond simple classification by providing transparency through confidence scores, visual analytics, and explainable insights, making it a reliable decision-support tool.
 
 ---
 
-✨ Features
+✨ Key Features
 
-✔ Fake vs Real News Prediction
-✔ AI Confidence Score with Meter
-✔ Interactive Charts (Gauge + Donut)
-✔ Explainable AI (SHAP Analysis)
-✔ Sensational Content Detection
-✔ Risk & Recommendation System
-✔ Dark Mode UI 🌙
-✔ User Authentication (Login/Register)
-✔ AI Analysis Dashboard
+- 🔍 Fake vs Real News Classification
+- 📊 Confidence Score Generation
+- 📈 Interactive Dashboard (Charts & Analytics)
+- 🧠 SHAP-based Explainability (Influential Words)
+- ⚠️ Sensational Score & Risk Recommendation
+- 🔐 User Authentication (Login & Register)
+- 🕘 History Tracking Dashboard
+- 🌙 Dark Mode Interface
 
 ---
 
-🧠 Tech Stack
+🛠️ Tech Stack
 
-Frontend:
+Frontend
 
 - HTML
 - Tailwind CSS
 - JavaScript
-- Chart.js
 
-Backend:
+Backend
 
 - Flask (Python)
 
-Machine Learning:
+Machine Learning
 
-- Scikit-learn
-- BERT (optional advanced model)
+- Logistic Regression
+- TF-IDF Vectorization
+- Naive Bayes
+- BERT 
 
-Explainability:
+Explainability
 
-- SHAP (Explainable AI)
+- SHAP (SHapley Additive exPlanations)
 
-Database:
+Database
 
 - SQLite
 
 ---
 
-📊 System Workflow
+📂 Project Structure
 
-User Input → Text Preprocessing → Model Prediction →
-Confidence Score → Visualization → SHAP Explanation
+fake-news-detector/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── templates/
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── login.html
+│   ├── register.html
+│
+├── static/
+│   └── style.css
+│
+├── src/
+│   ├── predict.py
+│   ├── preprocess.py
+│   ├── bert_model.py
+│   ├── shap_explainer.py
+│
+├── model/
+│   ├── tfidf.pkl
+│   ├── naive_bayes.pkl
 
 ---
 
-📄 Research Publication
-
-This project is backed by a published research paper:
-
-Title: VeriNews AI: Explainable Fake News Detection & Verification System
-
-📎 Paper Link:
-https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
-
-📌 Abstract :
-This research proposes a hybrid AI-based system that detects fake news using machine learning models and enhances transparency using SHAP-based explainability. The system provides confidence scores and visual insights to improve trust and usability.
-
-🚀 Installation & Setup
-
-1️⃣ Clone Repository
+⚙️ Installation & Setup
 
 git clone https://github.com/barsharajput/fake-news-detector.git
 cd fake-news-detector
 
-2️⃣ Create Virtual Environment
-
-python -m venv venv
-venv\Scripts\activate   # Windows
-
-3️⃣ Install Dependencies
-
 pip install -r requirements.txt
-
-4️⃣ Run Application
 
 python app.py
 
+Open your browser and visit:
+
+http://127.0.0.1:5000
+
 ---
 
-🌐 Usage
+⚙️ How It Works
 
-1. Open browser → "http://127.0.0.1:5000"
-2. Paste news article
-3. Select model
-4. Click Analyze News
-5. View prediction, charts, and explanation
+1. User inputs news text
+2. Text preprocessing is performed
+3. Selected ML model predicts the label
+4. Confidence score is calculated
+5. Results are visualized in dashboard
+6. SHAP highlights important words influencing prediction
+
+---
+
+📄 Research Contribution
+
+This project is backed by a published research paper:
+
+👉 https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
 
 ---
 
 ⚠️ Disclaimer
 
-This system provides probabilistic predictions and should be used as a decision-support tool, not as a final fact verification system.
-
----
-
-🔮 Future Enhancements
-
-- Real-time news API integration
-- Browser extension
-- Multilingual support
-- Improved deep learning models
-- Cloud deployment (Render / AWS)
+This system is intended for educational and research purposes only.
+Predictions are probabilistic and should not be considered as verified facts.
 
 ---
 
 👩‍💻 Author
 
 Barsha Singh
-Final Year Project (AI/ML)
+AI/ML Developer
 
 ---
-
-⭐ Contribution
-
-Contributions are welcome! Feel free to fork and improve the project.
-
----
-
-📜 License
-
-This project is developed for academic and research purposes.
