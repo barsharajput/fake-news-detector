@@ -77,27 +77,15 @@ Title: VeriNews AI: Explainable Fake News Detection & Verification System
 📎 Paper Link:
 https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
 
-📌 Abstract (Short):
+📌 Abstract :
 This research proposes a hybrid AI-based system that detects fake news using machine learning models and enhances transparency using SHAP-based explainability. The system provides confidence scores and visual insights to improve trust and usability.
-
----
-
-📸 Screenshots
-
-(Add your screenshots here later)
-
-assets/
-   dashboard.png
-   result.png
-
----
 
 🚀 Installation & Setup
 
 1️⃣ Clone Repository
 
-git clone https://github.com//verinews-ai.git
-cd verinews-ai
+git clone https://github.com/barsharajput/fake-news-detector.git
+cd fake-news-detector
 
 2️⃣ Create Virtual Environment
 
