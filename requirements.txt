@@ -4,3 +4,8 @@ flask
 scikit-learn
 joblib
 gunicorn
+matplotlib
+seaborn
+shap
+transformers
+torch
