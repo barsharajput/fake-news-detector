@@ -1,1 +1,346 @@
+<!doctype html>
 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>VeriNews AI • Explainable Fake News Detection System</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = { darkMode: "class" };
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body
+        class="bg-gray-100 dark:bg-gray-900 dark:text-white transition duration-300"
+    >
+        <div class="container mx-auto p-6">
+            <!-- HEADER -->
+            <header
+                class="text-center mb-6 bg-white dark:bg-gray-800 p-4 rounded shadow transition duration-300"
+            >
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+                    VeriNews AI
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Explainable Fake News Detection & Verification System
+                </p>
+
+                <div class="mt-4 flex justify-center gap-4">
+                    <!-- FIXED BUTTON -->
+                    <button
+                        onclick="toggleDarkMode()"
+                        class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition"
+                    >
+                        🌙 Dark Mode
+                    </button>
+
+                    <a href="/dashboard" class="text-green-500 font-semibold"
+                        >Dashboard</a
+                    >
+                    <a href="/logout" class="text-blue-500 font-semibold"
+                        >Logout</a
+                    >
+                </div>
+            </header>
+
+            <!-- INPUT -->
+            <section class="bg-white dark:bg-gray-800 p-5 rounded shadow mb-6">
+                <h2 class="text-xl font-semibold mb-3">
+                    📰 News Analysis Input
+                </h2>
+
+                <form method="POST" onsubmit="showLoader()">
+                    <select
+                        name="model"
+                        class="w-full p-2 border rounded mb-4 text-black"
+                    >
+                        <option value="logistic">Logistic Regression</option>
+                        <option value="naive_bayes">Naive Bayes</option>
+                        <option value="bert">BERT</option>
+                    </select>
+
+                    <textarea
+                        name="news"
+                        required
+                        class="w-full p-3 border rounded mb-4 text-black"
+                        placeholder="Paste news here..."
+                    >
+{{ result.news_text if result }}</textarea
+                    >
+
+                    <button
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full"
+                    >
+                        🔍 Analyze News
+                    </button>
+                    <div id="loader" class="text-center mt-3 hidden">
+                        <div class="flex justify-center">
+                            <div
+                                class="w-6 h-6 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
+                            ></div>
+                        </div>
+                        <p class="text-blue-500 mt-2">Analyzing with AI...</p>
+                    </div>
+                </form>
+            </section>
+
+            {% if result %}
+
+            <!-- RESULT -->
+            <div class="text-center mb-6">
+                <span
+                    class="px-4 py-2 rounded text-white {% if result.label == 'REAL NEWS' %} bg-green-500 {% elif result.label == 'FAKE NEWS' %} bg-red-500 {% else %} bg-yellow-500 {% endif %}"
+                >
+                    {{ result.label }}
+                </span>
+                <p class="text-sm text-gray-500 dark:text-gray-300 mt-2">
+                    Model Used: <b>{{ result.model_used }}</b>
+                </p>
+            </div>
+
+            <!-- CONFIDENCE BAR -->
+            <div class="bg-white dark:bg-gray-800 p-5 rounded shadow mb-6">
+                <h2 class="font-semibold mb-2">📊 AI Confidence Score</h2>
+                <div class="w-full bg-gray-200 rounded h-6">
+                    <div
+                        class="h-6 text-white text-center rounded {% if result.confidence > 75 %} bg-green-500 {% elif result.confidence > 50 %} bg-yellow-500 {% else %} bg-red-500 {% endif %}"
+                        style="width: {{ result.confidence }}%"
+                    >
+                        {{ result.confidence }}%
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded shadow mb-6">
+                <h2 class="text-center text-xl font-bold mb-6">
+                    📊 AI Analysis Dashboard
+                </h2>
+
+                <div class="flex flex-wrap justify-center gap-10">
+                    <!-- GAUGE -->
+                    <div style="width: 300px; height: 200px">
+                        <canvas id="gaugeChart"></canvas>
+                    </div>
+
+                    <!-- DONUT -->
+                    <div style="width: 300px; height: 300px">
+                        <canvas id="probChart"></canvas>
+                    </div>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center"
+                    >
+                        <!-- Confidence -->
+                        <div
+                            class="bg-white dark:bg-gray-800 p-5 rounded shadow hover:scale-105 transition"
+                        >
+                            <h3 class="text-gray-500 dark:text-gray-300">
+                                Confidence
+                            </h3>
+                            <p class="text-2xl font-bold text-blue-500">
+                                {{ result.confidence }}%
+                            </p>
+                        </div>
+
+                        <!-- Fake -->
+                        <div
+                            class="bg-white dark:bg-gray-800 p-5 rounded shadow hover:scale-105 transition"
+                        >
+                            <h3 class="text-gray-500 dark:text-gray-300">
+                                Fake Probability
+                            </h3>
+                            <p class="text-2xl font-bold text-red-500">
+                                {{ result.fake_probability * 100 }}%
+                            </p>
+                        </div>
+
+                        <!-- Real -->
+                        <div
+                            class="bg-white dark:bg-gray-800 p-5 rounded shadow hover:scale-105 transition"
+                        >
+                            <h3 class="text-gray-500 dark:text-gray-300">
+                                Real Probability
+                            </h3>
+                            <p class="text-2xl font-bold text-green-500">
+                                {{ result.real_probability * 100 }}%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROBABILITIES -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div
+                    class="bg-white dark:bg-gray-800 p-4 rounded shadow text-center"
+                >
+                    <h3 class="font-semibold">Fake Probability</h3>
+                    <p>{{ result.fake_probability * 100 }}%</p>
+                </div>
+
+                <div
+                    class="bg-white dark:bg-gray-800 p-4 rounded shadow text-center"
+                >
+                    <h3 class="font-semibold">Real Probability</h3>
+                    <p>{{ result.real_probability * 100 }}%</p>
+                </div>
+            </div>
+
+            <!-- RISK -->
+            <div
+                class="bg-yellow-100 dark:bg-yellow-600 p-5 rounded shadow mb-6"
+            >
+                <h2 class="font-semibold">⚠️ Risk & Recommendation</h2>
+                <p><b>Sensational Score:</b> {{ result.sensational_score }}</p>
+                <p><b>Recommendation:</b> {{ result.recommendation }}</p>
+            </div>
+
+            <!-- WORDS -->
+            <div class="bg-white dark:bg-gray-800 p-5 rounded shadow mb-6">
+                <h2 class="font-semibold mb-3">🧠 Influential Words</h2>
+
+                <ul class="space-y-2 max-h-48 overflow-y-auto">
+                    {% for word, weight in result.explanation %}
+
+                    <li
+                        class="flex justify-between items-center bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded shadow-sm"
+                    >
+                        <span class="font-medium">{{ word }}</span>
+
+                        <span class="text-sm font-bold text-blue-500">
+                            {{ weight }}
+                        </span>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- USER HISTORY -->
+            {% if history %}
+            <div
+                class="bg-white dark:bg-gray-800 dark:text-white p-5 rounded shadow mb-6"
+            >
+                <h2 class="text-lg font-semibold mb-3">📜 Your History</h2>
+
+                <div class="max-h-60 overflow-y-auto space-y-3">
+                    {% for item in history %}
+                    <div class="p-3 border rounded">
+                        <p class="text-sm"><b>News:</b> {{ item.text }}</p>
+                        <p><b>Result:</b> {{ item.result }}</p>
+                        <p><b>Confidence:</b> {{ item.confidence }}%</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %} {% endif %}
+
+            <!-- DISCLAIMER -->
+            <section
+                class="bg-gray-200 dark:bg-gray-700 p-5 rounded shadow transition duration-300"
+            >
+                <h2 class="text-lg font-semibold">⚖️ Ethical AI Disclaimer</h2>
+
+                <p class="text-gray-800 dark:text-gray-200">
+                    This system uses machine learning models trained on
+                    historical data. Predictions are probabilistic and do not
+                    verify facts. It should be used as a
+                    <b>decision-support tool</b>.
+                </p>
+            </section>
+        </div>
+        <!-- container end -->
+
+        <script>
+            function toggleDarkMode() {
+                document.documentElement.classList.toggle("dark");
+
+                if(document.documentElement.classList.contains("dark")){
+                    localStorage.setItem("theme", "dark");
+                } else {
+                    localStorage.setItem("theme", "light");
+                }
+            }
+
+            function showLoader() {
+                document.getElementById("loader").classList.remove("hidden");
+            }
+
+            // Load saved theme
+            if(localStorage.getItem("theme") === "dark"){
+                document.documentElement.classList.add("dark");
+            }
+
+            {% if result %}
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const confidence = {{ result.confidence }};
+                const fake = {{ result.fake_probability }};
+                const real = {{ result.real_probability }};
+
+                // GAUGE
+                new Chart(document.getElementById('gaugeChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Confidence', 'Remaining'],
+                        datasets: [{
+                            data: [confidence, 100 - confidence],
+                            backgroundColor: [
+                                confidence > 75 ? '#00c896' :
+                                (confidence > 50 ? '#ffc107' : '#ff4d4d'),
+                                '#e0e0e0'
+                            ],
+                            borderWidth: 0,
+                            circumference: 180,
+                            rotation: 270
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: 'AI Confidence Meter'
+                            }
+                        }
+                    }
+                });
+
+                // DONUT
+                new Chart(document.getElementById('probChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Fake News', 'Real News'],
+                        datasets: [{
+                            data: [fake, real],
+                            backgroundColor: ['#ff4d4d', '#00c896'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top' },
+                            title: {
+                                display: true,
+                                text: 'Fake vs Real News Probability'
+                            }
+                        }
+                    }
+                });
+
+            });
+            {% endif %}
+        </script>
+    </body>
+</html>
