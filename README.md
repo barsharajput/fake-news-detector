@@ -54,35 +54,6 @@ Database
 
 ---
 
-📂 Project Structure
-
-fake-news-detector/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-│
-├── templates/
-│   ├── index.html
-│   ├── dashboard.html
-│   ├── login.html
-│   ├── register.html
-│
-├── static/
-│   └── style.css
-│
-├── src/
-│   ├── predict.py
-│   ├── preprocess.py
-│   ├── bert_model.py
-│   ├── shap_explainer.py
-│
-├── model/
-│   ├── tfidf.pkl
-│   ├── naive_bayes.pkl
-
----
-
 ⚙️ Installation & Setup
 
 git clone https://github.com/barsharajput/fake-news-detector.git
