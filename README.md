@@ -191,13 +191,13 @@ fake-news-detector/
 
 ---
 
-🔄 Workflow
-1️⃣ Input news text
-2️⃣ Preprocessing & feature extraction
-3️⃣ Model selection (ML / BERT)
-4️⃣ Prediction (Real / Fake)
-5️⃣ Confidence + explanation generation
-6️⃣ Dashboard visualization
+## 🔄 Workflow
+- 1️⃣ Input news text
+- 2️⃣ Preprocessing & feature extraction
+- 3️⃣ Model selection (ML / BERT)
+- 4️⃣ Prediction (Real / Fake)
+- 5️⃣ Confidence + explanation generation
+- 6️⃣ Dashboard visualization
 
 ---
 
@@ -211,9 +211,9 @@ python app.py
 ```
 ---
 
-🔮 Future Improvements
-🚀 Deep learning enhancements
-🌐 Full-scale deployment
-📊 Larger datasets
-🧠 Improved explainability models
+## 🔮 Future Improvements
+- 🚀 Deep learning enhancements
+- 🌐 Full-scale deployment
+- 📊 Larger datasets
+- 🧠 Improved explainability models
 
