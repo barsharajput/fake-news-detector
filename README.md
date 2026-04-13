@@ -86,13 +86,12 @@ python app.py
 ---
 
 🎯 Future Improvements
-🔥 Deep Learning models (LSTM, BERT)
-🌐 Web interface (Flask / React)
-📊 Better accuracy with large datasets
-☁️ Deployment
+- 🔥 Deep Learning models (LSTM, BERT)
+- 🌐 Web interface (Flask / React)
+- 📊 Better accuracy with large datasets
+- ☁️ Deployment
 
 ---
 
 📄 Research Connection
-This project aligns with research in AI, NLP, and misinformation detection,
-helping build real-world intelligent systems.
+- This project aligns with research in AI, NLP, and misinformation detection, helping build real-world intelligent systems.
