@@ -1,103 +1,98 @@
-🧠 VeriNews AI – Explainable Fake News Detection System
+<h1 align="center">🧠 Fake News Detection System</h1>
 
-🔗 Research Paper: https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
+<p align="center">
+Detecting misinformation using Machine Learning & NLP 🚀
+</p>
 
----
-
-📌 Overview
-
-VeriNews AI is an intelligent fake news detection and verification system that leverages Machine Learning and Explainable AI to classify news articles as Real, Fake, or Uncertain.
-
-The system goes beyond simple classification by providing transparency through confidence scores, visual analytics, and explainable insights, making it a reliable decision-support tool.
+<p align="center">
+A smart AI-based system that classifies news as <b>Real or Fake</b> using Natural Language Processing techniques.
+</p>
 
 ---
 
-✨ Key Features
-
-- 🔍 Fake vs Real News Classification
-- 📊 Confidence Score Generation
-- 📈 Interactive Dashboard (Charts & Analytics)
-- 🧠 SHAP-based Explainability (Influential Words)
-- ⚠️ Sensational Score & Risk Recommendation
-- 🔐 User Authentication (Login & Register)
-- 🕘 History Tracking Dashboard
-- 🌙 Dark Mode Interface
+<p align="center">
+<a href="#"><img src="https://img.shields.io/badge/🚀%20LIVE-DEMO-green?style=for-the-badge" /></a>
+<img src="https://img.shields.io/badge/🧠%20MODEL-ML-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/⚙️%20BACKEND-Python-yellow?style=for-the-badge" />
+<img src="https://img.shields.io/badge/📊%20LIBRARY-ScikitLearn-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/📚%20DATA-NLP-purple?style=for-the-badge" />
+</p>
 
 ---
 
-🛠️ Tech Stack
+## ❌ Problem Statement
 
-Frontend
+Fake news spreads rapidly and creates misinformation in society.  
+Identifying whether a news article is real or fake is challenging due to:
 
-- HTML
-- Tailwind CSS
-- JavaScript
+- ❌ Large volume of online content  
+- ❌ Misleading headlines and text  
+- ❌ Lack of automated verification systems  
+- ❌ Human bias and manual checking limitations  
 
-Backend
-
-- Flask (Python)
-
-Machine Learning
-
-- Logistic Regression
-- TF-IDF Vectorization
-- Naive Bayes
-- BERT 
-
-Explainability
-
-- SHAP (SHapley Additive exPlanations)
-
-Database
-
-- SQLite
+This leads to confusion, misinformation, and poor decision-making.
 
 ---
 
-⚙️ Installation & Setup
+## 💡 Solution
 
-git clone https://github.com/barsharajput/fake-news-detector.git
-cd fake-news-detector
+The **Fake News Detection System** solves this problem using Machine Learning:
 
+- ✔️ Classifies news as **Real or Fake**
+- ✔️ Uses **Natural Language Processing (NLP)** for text analysis  
+- ✔️ Automates detection process  
+- ✔️ Improves reliability of information  
+
+---
+
+## ⚙️ Tech Stack
+
+- 🐍 Python  
+- 📊 Pandas, NumPy  
+- 🧠 Scikit-learn  
+- 🔍 NLP Techniques  
+- 📁 Dataset Processing  
+
+---
+
+## 🔍 Features
+
+- 🧠 Machine Learning Model for classification  
+- 📊 Text preprocessing & cleaning  
+- 🔍 Feature extraction using NLP  
+- ⚡ Real-time prediction (if implemented)  
+- 📈 Model evaluation & accuracy  
+
+---
+
+## 📊 Model Workflow
+
+1. Data Collection  
+2. Data Cleaning & Preprocessing  
+3. Feature Extraction (TF-IDF / NLP)  
+4. Model Training (ML Algorithm)  
+5. Prediction (Real / Fake)  
+
+---
+
+## 🚀 How to Run
+
+```bash
+git clone https://github.com/YOUR_USERNAME/fake-news-detection
+cd fake-news-detection
 pip install -r requirements.txt
-
 python app.py
+```
+---
 
-Open your browser and visit:
-
-http://127.0.0.1:5000
+🎯 Future Improvements
+🔥 Deep Learning models (LSTM, BERT)
+🌐 Web interface (Flask / React)
+📊 Better accuracy with large datasets
+☁️ Deployment
 
 ---
 
-⚙️ How It Works
-
-1. User inputs news text
-2. Text preprocessing is performed
-3. Selected ML model predicts the label
-4. Confidence score is calculated
-5. Results are visualized in dashboard
-6. SHAP highlights important words influencing prediction
-
----
-
-📄 Research Contribution
-
-This project is backed by a published research paper:
-
-👉 https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205
-
----
-
-⚠️ Disclaimer
-
-This system is intended for educational and research purposes only.
-Predictions are probabilistic and should not be considered as verified facts.
-
----
-
-👩‍💻 Author
-
-Barsha Singh
-AI/ML Developer
-
----
+📄 Research Connection
+This project aligns with research in AI, NLP, and misinformation detection,
+helping build real-world intelligent systems.
