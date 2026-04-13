@@ -1,47 +1,57 @@
-<h1 align="center">🧠 Fake News Detection System</h1>
+<h1 align="center">🧠 VeriNews AI – Fake News Detection System</h1>
 
 <p align="center">
-Detecting misinformation using Machine Learning & NLP 🚀
+<b>🚀 AI-Powered, Research-Driven Platform for Detecting Misinformation using ML, BERT & Explainable AI</b>
 </p>
 
 <p align="center">
-A smart AI-based system that classifies news as <b>Real or Fake</b> using Natural Language Processing techniques.
-</p>
-
----
-
-<p align="center">
-<a href="#"><img src="https://img.shields.io/badge/🚀%20LIVE-DEMO-green?style=for-the-badge" /></a>
-<img src="https://img.shields.io/badge/🧠%20MODEL-ML-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/⚙️%20BACKEND-Python-yellow?style=for-the-badge" />
-<img src="https://img.shields.io/badge/📊%20LIBRARY-ScikitLearn-orange?style=for-the-badge" />
-<img src="https://img.shields.io/badge/📚%20DATA-NLP-purple?style=for-the-badge" />
+Classifies news as <b>Real or Fake</b> with advanced analytics, explainability, and intelligent insights
 </p>
 
 ---
 
-## ❌ Problem Statement
+<p align="center">
+<img src="https://img.shields.io/badge/AI-ML%20%2B%20BERT-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/XAI-Explainable%20AI-purple?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Backend-Python-yellow?style=for-the-badge" />
+<img src="https://img.shields.io/badge/UI-Dashboard-green?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Status-Research%20Based-success?style=for-the-badge" />
+</p>
 
-Fake news spreads rapidly and creates misinformation in society.  
-Identifying whether a news article is real or fake is challenging due to:
+---
 
-- ❌ Large volume of online content  
-- ❌ Misleading headlines and text  
-- ❌ Lack of automated verification systems  
-- ❌ Human bias and manual checking limitations  
+## 📌 Problem Statement
 
-This leads to confusion, misinformation, and poor decision-making.
+The rapid spread of misinformation across digital platforms makes it difficult to distinguish between **real and fake news**.
+
+- ❌ High volume of unverified content  
+- ❌ Misleading headlines & narratives  
+- ❌ Lack of intelligent verification tools  
+- ❌ Manual fact-checking is slow  
+
+➡️ Result: misinformation, confusion, and poor decision-making.
 
 ---
 
 ## 💡 Solution
 
-The **Fake News Detection System** solves this problem using Machine Learning:
+**VeriNews AI** is an advanced AI-powered system that:
 
-- ✔️ Classifies news as **Real or Fake**
-- ✔️ Uses **Natural Language Processing (NLP)** for text analysis  
-- ✔️ Automates detection process  
-- ✔️ Improves reliability of information  
+- ✔️ Detects fake news using **Machine Learning + BERT**
+- ✔️ Provides **confidence scores & probability analysis**
+- ✔️ Explains predictions using **Explainable AI (XAI)**
+- ✔️ Adds an **intelligence layer for risk & recommendations**
+- ✔️ Offers a **dashboard-based user experience**
+
+---
+
+## 🧠 Research Integration
+
+This project is backed by my **published research paper**:
+
+🔗 https://ijrti.org/viewpaperforall.php?paper=IJRTI2603205  
+
+> 📖 Focuses on Fake News Detection using NLP & Machine Learning techniques to improve accuracy and reliability.
 
 ---
 
@@ -50,48 +60,160 @@ The **Fake News Detection System** solves this problem using Machine Learning:
 - 🐍 Python  
 - 📊 Pandas, NumPy  
 - 🧠 Scikit-learn  
-- 🔍 NLP Techniques  
-- 📁 Dataset Processing  
+- 🤖 BERT (NLP Model)  
+- 📊 Chart.js  
+- 🌐 HTML, CSS, JavaScript  
 
 ---
 
-## 🔍 Features
+## 🧠 Core AI Features
 
-- 🧠 Machine Learning Model for classification  
-- 📊 Text preprocessing & cleaning  
-- 🔍 Feature extraction using NLP  
-- ⚡ Real-time prediction (if implemented)  
-- 📈 Model evaluation & accuracy  
-
----
-
-## 📊 Model Workflow
-
-1. Data Collection  
-2. Data Cleaning & Preprocessing  
-3. Feature Extraction (TF-IDF / NLP)  
-4. Model Training (ML Algorithm)  
-5. Prediction (Real / Fake)  
+- 🧠 Fake News Detection using:
+  - Logistic Regression  
+  - Naive Bayes  
+- 🤖 Advanced detection using **BERT Model**  
+- 🔄 Hybrid model selection (user can choose model dynamically)  
 
 ---
 
-## 🚀 How to Run
+## 📊 Prediction & Analysis
+
+- 📊 Real vs Fake probability score  
+- 🎯 AI confidence score (%)  
+- 📈 Dynamic confidence meter (gauge chart)  
+- 🍩 Prediction visualization (donut chart)  
+
+---
+
+## 🧠 Explainable AI (XAI)
+
+- 🔍 Influential words analysis  
+- 🧾 TF-IDF based model explanation  
+- ⚡ SHAP integration (interpretability)  
+- 📌 Context-based prediction explanation (BERT)  
+
+---
+
+## ⚠️ Intelligence & Risk Layer
+
+- 🚨 Sensational news detection  
+- 🧮 Sensational score calculation  
+- 💡 Smart recommendation system  
+  - Reliable  
+  - Needs fact-checking  
+
+---
+
+## 🎨 User Interface & Experience
+
+- 🌙 Dark mode support  
+- ⚡ Loading animation (AI processing simulation)  
+- 📊 Interactive charts (Chart.js)  
+- 🎯 Dashboard-style UI  
+- 📱 Fully responsive design  
+
+---
+
+## 📊 Dashboard Features
+
+- 🧾 AI analysis dashboard  
+- 📊 Mini stats cards (confidence / fake / real)  
+- 🎨 Dynamic color indicators (Green / Yellow / Red)  
+
+---
+
+## 🔐 Authentication System
+
+- 🔑 User login  
+- 📝 User registration  
+- 🚪 Logout functionality  
+
+---
+
+## ✨ Additional Smart Features
+
+- ✨ Sensational word highlighting  
+- 🧠 Model transparency (display selected model)  
+- ⚖️ Ethical AI disclaimer  
+- 📚 Decision-support system (not a fact verifier)  
+
+---
+
+---
+
+## 📁 Project Structure
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/fake-news-detection
-cd fake-news-detection
+fake-news-detector/
+│── app.py                     # Main Flask application
+│── requirements.txt           # Dependencies
+│── README.md                  # Documentation
+│
+├── models/                    # ML & BERT models
+│   ├── ml_model.pkl
+│   ├── bert_model/
+│   └── vectorizer.pkl
+│
+├── data/                      # Dataset files
+│   └── news.csv
+│
+├── static/                    # Static assets
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── images/
+│
+├── templates/                 # HTML templates
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── login.html
+│   ├── register.html
+│   └── result.html
+│
+├── utils/                     # Helper modules
+│   ├── preprocessing.py       # Text cleaning & NLP
+│   ├── prediction.py          # Model prediction logic
+│   ├── explainability.py      # SHAP / feature importance
+│   └── helpers.py
+│
+├── auth/                      # Authentication system
+│   ├── login.py
+│   ├── register.py
+│   └── auth_utils.py
+│
+├── config/                    # Configuration files
+│   └── config.py
+│
+└── logs/                      # Logs (optional)
+    └── app.log
+```
+
+---
+
+🔄 Workflow
+1️⃣ Input news text
+2️⃣ Preprocessing & feature extraction
+3️⃣ Model selection (ML / BERT)
+4️⃣ Prediction (Real / Fake)
+5️⃣ Confidence + explanation generation
+6️⃣ Dashboard visualization
+
+---
+
+🚀 How to Run
+
+```bash
+git clone https://github.com/barsharajput/fake-news-detector
+cd fake-news-detector
 pip install -r requirements.txt
 python app.py
 ```
 ---
 
-🎯 Future Improvements
-- 🔥 Deep Learning models (LSTM, BERT)
-- 🌐 Web interface (Flask / React)
-- 📊 Better accuracy with large datasets
-- ☁️ Deployment
+🔮 Future Improvements
+🚀 Deep learning enhancements
+🌐 Full-scale deployment
+📊 Larger datasets
+🧠 Improved explainability models
 
----
-
-📄 Research Connection
-- This project aligns with research in AI, NLP, and misinformation detection, helping build real-world intelligent systems.
