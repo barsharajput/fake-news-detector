@@ -155,9 +155,3 @@ Try it live: [verinews-ai.herokuapp.com](https://verinews-ai.herokuapp.com) *(Co
 
 **Decision-support tool only.** Always verify with trusted fact-checkers (Snopes, FactCheck.org). 
 Not liable for decisions based on predictions.
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file.
-
-## 📁 Project Structure
