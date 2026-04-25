@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>VeriNews AI</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-[#020617] text-white">
+
+<!-- HEADER -->
+<section class="px-6 pt-8">
+  <div class="max-w-6xl mx-auto bg-gradient-to-br from-[#0b1220] to-[#0d1b2a] border border-green-500/10 rounded-2xl px-8 py-8 shadow-[0_0_50px_rgba(34,197,94,0.15)]">
+
+    <!-- TOP BAR -->
+    <div class="flex justify-between items-center mb-8">
+
+      <!-- LOGO -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl border border-green-500/30 flex items-center justify-center text-green-400 font-bold">
+          V
+        </div>
+        <h2 class="text-lg font-semibold text-white">
+          VeriNews <span class="text-green-400">AI</span>
+        </h2>
+      </div>
+
+    </div>
+
+    <!-- BADGE -->
+    <div class="flex justify-center mb-4">
+      <span class="px-4 py-1 text-xs rounded-full border border-green-500/30 text-green-400 bg-green-500/5 tracking-wide">
+        ● AI POWERED • REAL-TIME • EXPLAINABLE
+      </span>
+    </div>
+
+    <!-- TITLE -->
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-white">
+      VeriNews <span class="text-green-400">AI</span>
+    </h1>
+
+    <p class="text-center text-gray-400 mt-2 text-sm">
+      Explainable Fake News Detection & Verification System
+    </p>
+
+    <!-- FEATURES -->
+    <div class="flex flex-wrap justify-center gap-3 mt-6">
+
+      <div class="px-4 py-2 text-xs bg-[#0b1220] border border-green-500/20 rounded-lg text-gray-200">
+        🧠 ML + BERT Models
+      </div>
+
+      <div class="px-4 py-2 text-xs bg-[#0b1220] border border-green-500/20 rounded-lg text-gray-200">
+        🎯 94% Accuracy
+      </div>
+
+      <div class="px-4 py-2 text-xs bg-[#0b1220] border border-green-500/20 rounded-lg text-gray-200">
+        ⚡ Real-time Analysis
+      </div>
+
+      <div class="px-4 py-2 text-xs bg-[#0b1220] border border-green-500/20 rounded-lg text-gray-200">
+        👁️ Explainable AI
+      </div>
+
+      <div class="px-4 py-2 text-xs bg-[#0b1220] border border-green-500/20 rounded-lg text-gray-200">
+        🔒 Secure & Private
+      </div>
+
+    </div>
+
+    <!-- NAV -->
+    <div class="border-t border-gray-800 mt-8 pt-6 flex justify-between items-center flex-wrap gap-4">
+
+      <div class="flex gap-6 text-sm text-gray-300">
+
+        <a href="/dashboard" class="text-green-400 font-medium">🏠 Dashboard</a>
+        <a href="/home" class="hover:text-green-400">🔍 Analyze</a>
+        <a href="/history" class="hover:text-green-400">🕒 History</a>
+        <a href="/models" class="hover:text-green-400">📦 Models</a>
+        <a href="#" class="hover:text-green-400">📊 Reports</a>
+
+      </div>
+
+      <a href="/logout">
+        <button class="px-4 py-2 text-sm rounded-lg border border-red-500 text-red-400 hover:bg-red-500/10 transition">
+          Logout
+        </button>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+            <!-- INPUT -->
+
+            <section class="glass p-6 rounded-xl shadow-xl mb-6">
+                <h2 class="text-xl font-semibold mb-3 text-white">
+                    📰 News Analysis Input
+                </h2>
+
+                <!-- ✅ FORM START -->
+                <form method="POST" onsubmit="return validateInput();">
+                    <!-- 🔥 URL INPUT (FIXED: INSIDE FORM) -->
+                    <input
+                        type="text"
+                        name="url"
+                        placeholder="🔗 Paste news article URL (optional)"
+                        class="w-full p-3 mb-3 rounded bg-gray-800 border border-gray-700 text-white"
+                    />
+
+                    <!-- MODEL -->
+                    <select
+                        name="model"
+                        class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-white mb-4"
+                    >
+                        <option value="logistic">Logistic Regression</option>
+                        <option value="naive_bayes">Naive Bayes</option>
+                        <option value="bert">BERT</option>
+                    </select>
+
+                    <!-- TEXTAREA -->
+                    <textarea
+                        name="news"
+                        class="w-full p-4 rounded-lg bg-gray-900 border border-gray-700 text-white placeholder-gray-400 mb-4 focus:ring-2 focus:ring-green-500 outline-none"
+                        placeholder="Paste news here..."
+                    >
+{{ result.news_text if result }}</textarea
+                    >
+
+                    <!-- BUTTON -->
+                    <button
+                        type="submit"
+                        class="bg-green-500 text-black px-4 py-3 rounded-lg w-full font-bold hover:scale-105 hover:shadow-lg hover:shadow-green-500/30 transition"
+                    >
+                        🔍 Analyze News
+                    </button>
+
+                    <!-- LOADER -->
+                    <div id="loader" class="text-center mt-3 hidden">
+                        <div class="flex justify-center">
+                            <div
+                                class="w-6 h-6 border-4 border-green-400 border-t-transparent rounded-full animate-spin"
+                            ></div>
+                        </div>
+                        <p class="text-green-400 mt-2">Analyzing with AI...</p>
+                    </div>
+                </form>
+                <!-- ✅ FORM END -->
+            </section>
+
+            {% if result %}
+
+            <!-- RESULT -->
+
+            <div class="text-center mb-6">
+                <span
+                    class="px-4 py-2 rounded text-white font-bold {% if result.label == 'REAL NEWS' %} bg-green-500 {% elif result.label == 'FAKE NEWS' %} bg-red-500 {% else %} bg-yellow-500 {% endif %}"
+                >
+                    {{ result.label }}
+                </span>
+
+                <p class="text-sm text-gray-400 mt-2">
+                    Model Used: <b>{{ result.model_used }}</b>
+                </p>
+            </div>
+
+            <div class="flex justify-center mt-2 gap-2">
+
+                {% if result.language == "hi" %}
+                    <span class="px-3 py-1 text-xs rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/30">
+                        🇮🇳 Hindi → Translated
+                    </span>
+                {% else %}
+                    <span class="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">
+                        🇬🇧 English → Original
+                    </span>
+                {% endif %}
+
+            </div>
+
+            <!-- CONFIDENCE -->
+
+            <div class="glass p-5 rounded-xl shadow mb-6">
+                <h2 class="font-semibold mb-2">📊 AI Confidence Score</h2>
+
+                <div class="w-full bg-gray-800 rounded h-6">
+                    <div
+                        class="h-6 text-black text-center rounded font-bold {% if result.confidence > 75 %} bg-green-400 {% elif result.confidence > 50 %} bg-yellow-400 {% else %} bg-red-400 {% endif %}"
+                        style="width: {{ result.confidence }}%"
+                    >
+                        {{ result.confidence }}%
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD -->
+            <div class="glass p-6 rounded-xl shadow mb-6">
+                <h2 class="text-center text-xl font-bold mb-8">
+                    📊 AI Analysis Dashboard
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-6 items-center">
+                    <!-- GAUGE -->
+                    <div class="text-center">
+                        <p class="mb-3 text-sm text-gray-400 font-semibold">
+                            AI Confidence Meter
+                        </p>
+                        <div class="flex justify-center">
+                            <div style="width: 260px; height: 160px">
+                                <canvas id="gaugeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DONUT -->
+                    <div class="text-center">
+                        <p class="mb-3 text-sm text-gray-400 font-semibold">
+                            Fake vs Real News Probability
+                        </p>
+                        <div class="flex justify-center">
+                            <div style="width: 240px; height: 240px">
+                                <canvas id="probChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STATS -->
+                    <div class="grid gap-4">
+                        <div
+                            class="bg-gray-800/60 p-4 rounded-lg text-center border border-gray-700"
+                        >
+                            <p class="text-sm text-gray-400">Confidence</p>
+                            <p class="text-xl font-bold text-green-400">
+                                {{ result.confidence }}%
+                            </p>
+                        </div>
+
+                        <div
+                            class="bg-gray-800/60 p-4 rounded-lg text-center border border-gray-700"
+                        >
+                            <p class="text-sm text-gray-400">
+                                Fake Probability
+                            </p>
+                            <p class="text-xl font-bold text-red-400">
+                                {{ result.fake_probability * 100 }}%
+                            </p>
+                        </div>
+
+                        <div
+                            class="bg-gray-800/60 p-4 rounded-lg text-center border border-gray-700"
+                        >
+                            <p class="text-sm text-gray-400">
+                                Real Probability
+                            </p>
+                            <p class="text-xl font-bold text-green-400">
+                                {{ result.real_probability * 100 }}%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROBABILITY -->
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="glass p-4 rounded text-center">
+                    <h3 class="font-semibold">Fake Probability</h3>
+                    <p class="text-red-400">
+                        {{ result.fake_probability * 100 }}%
+                    </p>
+                </div>
+
+                <div class="glass p-4 rounded text-center">
+                    <h3 class="font-semibold">Real Probability</h3>
+                    <p class="text-green-400">
+                        {{ result.real_probability * 100 }}%
+                    </p>
+                </div>
+            </div>
+
+            <!-- RISK -->
+
+            <div
+                class="bg-yellow-500/10 border border-yellow-500/30 p-5 rounded-xl mb-6"
+            >
+                <h2 class="font-semibold text-yellow-300">
+                    ⚠️ Risk & Recommendation
+                </h2>
+                <p><b>Sensational Score:</b> {{ result.sensational_score }}</p>
+                <p><b>Recommendation:</b> {{ result.recommendation }}</p>
+            </div>
+
+            <!-- WORDS -->
+
+            <div class="glass p-5 rounded-xl mb-6">
+                <h2 class="font-semibold mb-3">🧠 Influential Words</h2>
+
+                <ul class="space-y-2 max-h-48 overflow-y-auto">
+                    {% for word, weight in result.explanation %}
+                    <li
+                        class="flex justify-between bg-gray-800 px-4 py-2 rounded"
+                    >
+                        <span>{{ word }}</span>
+                        <span class="text-green-400 font-bold"
+                            >{{ weight }}</span
+                        >
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- HISTORY -->
+
+            {% if history %}
+
+            <div class="glass p-5 rounded-xl mb-6">
+                <h2 class="text-lg font-semibold mb-3">📜 Your History</h2>
+
+                <div class="max-h-60 overflow-y-auto space-y-3">
+                    {% for item in history %}
+                    <div class="bg-gray-800 p-3 rounded">
+                        <p class="text-sm"><b>News:</b> {{ item.text }}</p>
+                        <p><b>Result:</b> {{ item.result }}</p>
+                        <p><b>Confidence:</b> {{ item.confidence }}%</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %} {% endif %}
+
+            <!-- DISCLAIMER -->
+
+            <section class="glass p-5 rounded-xl shadow">
+                <h2 class="text-lg font-semibold">⚖️ Ethical AI Disclaimer</h2>
+
+                <p class="text-gray-300">
+                    This system uses machine learning models trained on
+                    historical data. Predictions are probabilistic and do not
+                    verify facts. It should be used as a
+                    <b>decision-support tool</b>.
+                </p>
+            </section>
+        </div>
+
+        <script>
+
+            function validateInput() {
+                const news = document.querySelector("textarea[name='news']").value.trim();
+                const url = document.querySelector("input[name='url']").value.trim();
+
+                if (!news && !url) {
+                    alert("⚠️ Please enter News text OR URL");
+                    return false;
+                }
+
+                document.getElementById("loader").classList.remove("hidden");
+                return true;
+            }
+
+                function toggleDarkMode() {
+                document.documentElement.classList.toggle("dark");
+                }
+
+                function showLoader() {
+                document.getElementById("loader").classList.remove("hidden");
+                }
+
+                {% if result %}
+                document.addEventListener("DOMContentLoaded", function () {
+
+                const confidence = {{ result.confidence }};
+                const fake = {{ result.fake_probability }};
+                const real = {{ result.real_probability }};
+
+                new Chart(document.getElementById('gaugeChart'), {
+                type: 'doughnut',
+                data: {
+                datasets: [{
+                data: [confidence, 100 - confidence],
+                backgroundColor: ['#22c55e', '#1f2937'],
+                borderWidth: 0,
+                circumference: 180,
+                rotation: 270
+                }]
+                },
+                options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } }
+                }
+                });
+
+                new Chart(document.getElementById('probChart'), {
+                type: 'doughnut',
+                data: {
+                labels: ['Fake', 'Real'],
+                datasets: [{
+                data: [fake, real],
+                backgroundColor: ['#ef4444', '#22c55e']
+                }]
+                },
+                options: {
+                responsive: true,
+                maintainAspectRatio: false
+                }
+                });
+
+                });
+                {% endif %}
+        </script>
+    </body>
+</html>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register | VeriNews AI</title>
+        <title>Login | VeriNews AI</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,7 +16,7 @@
         <style>
             body {
                 font-family: "Inter", sans-serif;
-                background: linear-gradient(135deg, #020617, #0f172a);
+                background: linear-gradient(135deg, #0f172a, #020617);
             }
             .card {
                 background: rgba(255, 255, 255, 0.05);
@@ -36,10 +36,15 @@
                 class="hidden md:flex flex-col justify-center p-10 bg-gradient-to-br from-green-500/20 to-transparent"
             >
                 <h1 class="text-4xl font-bold mb-4 text-white">
-                    Join <span class="text-green-400">VeriNews AI 🚀</span>
+                    Welcome Back 👋
+                    <br />
+                    <span
+                        class="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent"
+                    >
+                    </span>
                 </h1>
                 <p class="text-gray-400">
-                    Create your account and start detecting fake news with AI.
+                    Login to continue analyzing news with AI-powered detection.
                 </p>
             </div>
 
@@ -47,8 +52,9 @@
 
             <div class="card p-10">
                 <h2 class="text-2xl font-bold mb-6 text-center text-white">
-                    Create Account
+                    Sign In
                 </h2>
+
                 {% if error %}
 
                 <p class="text-red-400 text-sm mb-4 text-center">{{ error }}</p>
@@ -61,7 +67,6 @@
                         placeholder="Username"
                     <input type="text" name="username" placeholder="Username"
                     class="w-full p-3 rounded bg-gray-900 border border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 outline-none">
-                    />
 
                     <input
                         type="password"
@@ -75,14 +80,14 @@
                         type="submit"
                         class="w-full bg-green-500 py-3 rounded font-bold text-black hover:scale-105 transition"
                     >
-                        Create Account
+                        Login
                     </button>
                 </form>
 
                 <p class="text-center text-gray-400 mt-6">
-                    Already have an account?
-                    <a href="{{ url_for('login') }}" class="text-green-400"
-                        >Login</a
+                    Don’t have an account?
+                    <a href="{{ url_for('register') }}" class="text-green-400"
+                        >Register</a
                     >
                 </p>
             </div>
